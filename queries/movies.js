@@ -20,7 +20,7 @@ const getOneMovie = async (id) => {
 
 const createMovie = async (movie) => {
   try {
-    const createdMovie = await db.one("INSERT INTO movies", [movie.title, movie.year_of_release, movie.genres, movie.description, movie.rating, movie.runtime, movie.is_favorite])
+    const createdMovie = await db.one("INSERT INTO movies", [movie.title, movie.year_of_release, movie.genres, movie.description, movie.rating, movie.runtime])
     return createdMovie
   } catch (error) {
     return error
@@ -38,8 +38,8 @@ const deleteMovie = async (id) => {
 
 const updateMovie = async (id, movie) => {
   try {
-    const { title, year_of_release, genre, description, rating, runtime, is_favorite } = movie;
-    const updatedMovie = await db.one("UPDATE movies SET title=$1, year_of_release=$2, genre=$3, description=$4, rating=$5, runtime=$6,cis_favorite=$7", [title,year_of_release,genre, description, rating, runtime, is_favorite]);
+    const { title, year_of_release, genres, description, rating, runtime } = movie;
+    const updatedMovie = await db.one("UPDATE movies SET title=$1, year_of_release=$2, genre=$3, description=$4, rating=$5, runtime=$6,cis_favorite=$7", [title,year_of_release,genres, description, rating, runtime]);
     return updatedMovie 
   } catch(error) {
     return error
