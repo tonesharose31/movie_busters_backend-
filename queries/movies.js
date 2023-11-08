@@ -3,7 +3,7 @@ const db  = require("../db/dbConfig");
 const getAllMovies = async () => {
   try {
     const getAllMovies = await db.any("SELECT * FROM movies");
-    return allMovies
+    return getAllMovies
   } catch(error) {
     return error
   }

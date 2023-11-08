@@ -8,42 +8,52 @@ const {
 } = require("../queries/movies.js");
 
 const reviewsController = require("./reviewsController.js");
-const { checkTitle, checkYear, checkGenres, checkRating, checkRuntime } = require("../validations/checkMovies.js");
+ const { checkTitle } = require("../validations/checkMovies.js");
+const { id } = require("process");
 
 const movies = express.Router();
 
 movies.use("/:movie_id/reviews", reviewsController);
 
 movies.get("/:id", async (req, res) => {
-    const { id } = req.params;
-    const oneMovie = await getOneMovie(id);
-    if (oneMovie) {
-        res.json(oneMovie);
-    } else {
-        res.status(404).json({ error: "Movie not found!" });
-    }
-});
-
-movies.get("/", async (req, res) => {
-    const allMovies = await getAllMovies();
-    if (allMovies[0]) {
-        res.status(200)
-        .json({ success: true, data: { payload: allMovies } });
-    } else {
-        res.status(500)
-        .json({ success: false, data: { error: "Server Error - we didn't do it!" } });
-    }
-});
-
-
-movies.post("/", checkTitle, checkYear, checkGenres, checkRating, checkRuntime, async (req, res) => {
     try {
-        const createdMovie = await createMovie(req.body);
-        res.json(createdMovie);
+        const { id } = req.params;
+        const oneMovie = await getOneMovie(id);
+        if (oneMovie) {
+            res.status(200).json(oneMovie);
+        } else {
+            res.status(404).json({ error: "Movie not found" });
+        }
     } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+
+const { checkTitle, checkYearOfRelease, checkGenres, checkDescription, checkRating, checkRuntime } = require('../validations/checkMovies');
+
+movies.post("/", checkTitle, checkYearOfRelease, checkGenres, checkDescription, checkRating, checkRuntime, async (req, res) => {
+    try {
+        const movieData = {
+            title: req.body.title,
+            year_of_release: req.body.year_of_release,
+            genres: req.body.genres,
+            description: req.body.description,
+            rating: req.body.rating,
+            runtime: req.body.runtime
+        };
+
+        const createdMovie = await createMovie(movieData);
+
+        res.status(201).json(createdMovie);
+    } catch (error) {
+        console.error(error);
         res.status(400).json({ error: "Error creating a movie" });
     }
 });
+
+
 
 movies.delete("/:id", async (req, res) => {
     try {
@@ -54,19 +64,28 @@ movies.delete("/:id", async (req, res) => {
         } else {
             res.status(404).json({ error: "Movie not found" });
         }
-    } catch (err) {
-        res.send(err);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "An error occurred while processing the request" });
     }
 });
 
+    
+
 movies.put("/:id", async (req, res) => {
-    const { id } = req.params;
-    const updatedMovie = await updateMovie(id, req.body);
-    if (updatedMovie.id) {
-        res.status(200).json(updatedMovie);
-    } else {
-        res.status(404).json({ error: "No movie found with that ID" });
+    try {
+        const { id } = req.params;
+        const updatedMovie = await updateMovie(id, req.body);
+        if (updatedMovie.id) {
+            res.status(200).json(updatedMovie);
+        } else {
+            res.status(404).json({ error: "No movie found with that ID" });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "An error occurred while processing the request" });
     }
 });
+
 
 module.exports = movies;
