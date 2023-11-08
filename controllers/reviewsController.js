@@ -13,7 +13,7 @@ const {
 reviews.get("/", async (req, res) => {
   const { movie_id } = req.params;
   try {
-    const movie = await getOnemMovie(movie_id);
+    const movie = await getOneMovie(movie_id);
     const getAllReviews = await getAllReviews(movie_id);
     res.json({ ...movie, allReviews});
   } catch (error) {
