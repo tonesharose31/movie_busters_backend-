@@ -9,6 +9,5 @@ const checkTitle = (req, res, next) => {
 
 
 module.exports = {
-  checkTitle,
-  checkBoolean
+  checkTitle
 }
