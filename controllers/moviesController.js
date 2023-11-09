@@ -1,3 +1,4 @@
+const { checkTitle, checkYearOfRelease, checkGenres, checkDescription, checkRating, checkRuntime } = require('../validations/checkMovies');
 const express = require("express");
 const { 
     getAllMovies, 
@@ -8,12 +9,14 @@ const {
 } = require("../queries/movies.js");
 
 const reviewsController = require("./reviewsController.js");
- const { checkTitle } = require("../validations/checkMovies.js");
+ 
 const { id } = require("process");
 
 const movies = express.Router();
 
 movies.use("/:movie_id/reviews", reviewsController);
+
+
 
 movies.get("/:id", async (req, res) => {
     try {
@@ -31,9 +34,8 @@ movies.get("/:id", async (req, res) => {
 });
 
 
-const { checkTitle, checkYearOfRelease, checkGenres, checkDescription, checkRating, checkRuntime } = require('../validations/checkMovies');
 
-movies.post("/", checkTitle, checkYearOfRelease, checkGenres, checkDescription, checkRating, checkRuntime, async (req, res) => {
+movies.post("/", checkTitle, async (req, res) => {
     try {
         const movieData = {
             title: req.body.title,
