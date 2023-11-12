@@ -25,11 +25,12 @@ function checkGenres(req, res, next) {
     return res.status(400).json({error: 'Genres must be provided as an array'});
   }
 
-  // for(const genre of genres){
-  //   if(!validGenres.includes(genres) {
-  //     return res.status
-  //   })
-  // }
+  for (const genre of genres) {
+    if (!validGenres.includes(genre)) {
+      return res.status(400).json({ error: `${genre} is not a valid genre` });
+    }
+  }
+  next();
 }
 module.exports = {
   checkTitle,

@@ -9,8 +9,6 @@ const {
 } = require("../queries/movies.js");
 
 const reviewsController = require("./reviewsController.js");
- 
-// const { id } = require("process");
 
 const movies = express.Router();
 
