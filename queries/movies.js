@@ -2,8 +2,8 @@ const db  = require("../db/dbConfig");
 
 const getAllMovies = async () => {
   try {
-    const getAllMovies = await db.any("SELECT * FROM movies");
-    return getAllMovies
+  const allMovies = await db.any("SELECT * FROM movies");
+    return allMovies
   } catch(error) {
     return error
   }
@@ -11,7 +11,7 @@ const getAllMovies = async () => {
 
 const getOneMovie = async (id) => {
   try {
-    const oneMovie = await db.one("SELECT * FROM schema_title.movies WHERE id =$1", id)
+    const oneMovie = await db.one("SELECT * FROM movies WHERE id =$1", id)
   
     return oneMovie
   } catch(error) {

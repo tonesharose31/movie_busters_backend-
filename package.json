@@ -2,10 +2,11 @@
   "name": "movie_busters_backend-",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "db_schema": "psql -U postgres -f db/schema.sql",
     "db_seed": "psql -U postgres -f db/seed.sql",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

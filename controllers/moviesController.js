@@ -1,4 +1,4 @@
-const { checkTitle, checkYearOfRelease, checkGenres, checkDescription, checkRating, checkRuntime } = require('../validations/checkMovies');
+const { checkTitle, checkDescription} = require('../validations/checkMovies');
 const express = require("express");
 const { 
     getAllMovies, 
@@ -10,7 +10,7 @@ const {
 
 const reviewsController = require("./reviewsController.js");
  
-const { id } = require("process");
+// const { id } = require("process");
 
 const movies = express.Router();
 
@@ -33,6 +33,16 @@ movies.get("/:id", async (req, res) => {
     }
 });
 
+
+movies.get("/", async (req, res) => {
+    const allMovies = await getAllMovies();
+    console.log(allMovies)
+    if (allMovies[0]) {
+      res.status(200).json({ succes: true, data: { payload: allMovies } });
+    } else {
+      res.status(500).json({ success: false, data: { error: "Server Error!" } });
+    }
+  });
 
 
 movies.post("/", checkTitle, async (req, res) => {
