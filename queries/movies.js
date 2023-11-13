@@ -21,12 +21,16 @@ const getOneMovie = async (id) => {
 
 const createMovie = async (movie) => {
   try {
-    const createdMovie = await db.one("INSERT INTO movies", [movie.title, movie.year_of_release, movie.genres, movie.description, movie.rating, movie.runtime])
-    return createdMovie
+    const createdMovie = await db.one(
+      "INSERT INTO movies (title, year_of_release, genres, description, rating, runtime) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [movie.title, movie.year_of_release, movie.genres, movie.description, movie.rating, movie.runtime]
+    );
+    return createdMovie;
   } catch (error) {
-    return error
+    return error;
   }
-}
+};
+
 
 const deleteMovie = async (id) => {
   try {

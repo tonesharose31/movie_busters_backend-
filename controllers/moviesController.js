@@ -8,7 +8,8 @@ const {
 } = require("../queries/movies.js");
 
 const reviewsController = require("./reviewsController.js");
-const { checkTitle, checkYear, checkGenres, checkRating, checkRuntime } = require("../validations/checkMovies.js");
+ 
+// const { id } = require("process");
 
 const movies = express.Router();
 
