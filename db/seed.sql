@@ -13,9 +13,10 @@ VALUES
 ('The Matrix',1999, '{Action, Sci-Fi}', 'A computer hacker learns about the true nature of his reality and his role in the war against its controllers.', 8.7,136), 
 ('The Conjuring', 2013, '{Horror, Paranormal}', 'Research uncovers a harrowing history of the house, linking it to accused witch Bathsheba Sherman, who, in 1863, sacrificed her infant to the devil, committed suicide, and left a legacy of murders and suicides on the property.', 7.5, 112);
 
+
 INSERT INTO reviews (movie_id, user_id, rating, comment) 
-VALUES (1, 1, 5, 'Absolutely loved it! The storyline and acting were outstanding.'),
-(1, 2, 4, 'A classic film with a powerful message. Enjoyed every moment.'),
-(2, 1, 4, 'Mind-blowing! The concept of dreams within dreams was fascinating.');
-
-
+VALUES
+  (1, 1, 5, 'Absolutely loved it! The storyline and acting were outstanding.'),
+  (1, 2, 4, 'A classic film with a powerful message. Enjoyed every moment.'),
+  (2, 1, 4, 'Mind-blowing! The concept of dreams within dreams was fascinating.'),
+  (2, 3, 5, 'Inception is a masterpiece. Christopher Nolan''s brilliance shines through.');

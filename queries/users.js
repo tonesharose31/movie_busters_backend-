@@ -1,4 +1,3 @@
-// src/queries/userQueries.js
 const bcrypt = require('bcrypt');
 
 // Function to hash a password using bcrypt
