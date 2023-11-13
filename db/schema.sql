@@ -23,7 +23,7 @@ rating TEXT,
 runtime INTEGER );
 
 
-CREATE TABLE reviews ( id SERIAL PRIMARY KEY, 
+CREATE TABLE reviews ( movie_id SERIAL PRIMARY KEY, 
 movie_id INTEGER REFERENCES movies(id)ON DELETE CASCADE, 
 user_id INTEGER REFERENCES users(id)ON DELETE CASCADE, 
 rating INTEGER, 
