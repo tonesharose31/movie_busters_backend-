@@ -6,5 +6,7 @@ VALUES
 ('Inception', 2010, '{Action, Sci-Fi}', 'A thief who enters the dreams of others to steal their secrets.', 8.8, 148),
 ('Forrest Gump', 1994, '{ Drama, Romance}', 'The life journey of a man with low intelligence who rose to become a football legend.', 8.8, 142),
 ('The Matrix',1999, '{Action, Sci-Fi}', 'A computer hacker learns about the true nature of his reality and his role in the war against its controllers.', 8.7,136), 
-('The Conjuring', 2013, '{Horror, Paranormal}', 'Research uncovers a harrowing history of the house, linking it to accused witch Bathsheba Sherman, who, in 1863, sacrificed her infant to the devil, committed suicide, and left a legacy of murders and suicides on the property.', 7.5, 112)
+('The Conjuring', 2013, '{Horror, Paranormal}', 'Research uncovers a harrowing history of the house, linking it to accused witch Bathsheba Sherman, who, in 1863, sacrificed her infant to the devil, committed suicide, and left a legacy of murders and suicides on the property.', 7.5, 112);
+
+INSERT INTO reviews( )
 
