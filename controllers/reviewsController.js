@@ -25,7 +25,7 @@ reviews.get("/:review_id", async (req,res) => {
   const { review_id, movie_id } = req.params;
   try {
     const review = await getOneReview(review_id);
-    const bookmark = await getOneMovie(movie_id);
+    const allMovies = await getOneMovie(movie_id);
     if (review.id) {
       res.json({ ...movie, review });
     }

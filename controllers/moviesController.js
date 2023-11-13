@@ -37,7 +37,7 @@ movies.get("/", async (req, res) => {
 });
 
 
-movies.post("/", checkTitle, checkYear, checkGenres, checkRating, checkRuntime, async (req, res) => {
+movies.post("/",  async (req, res) => {
     try {
         const createdMovie = await createMovie(req.body);
         res.json(createdMovie);

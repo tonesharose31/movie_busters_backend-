@@ -32,7 +32,9 @@ function checkGenres(req, res, next) {
   }
   next();
 }
+
 module.exports = {
   checkTitle,
-  checkDescription
+  checkDescription,
+  checkGenres
 }
