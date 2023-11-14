@@ -5,6 +5,7 @@ VALUES
 ('user1', 'user1@example.com', 'hashed_password1'),
 ('user2', 'user2@example.com', 'hashed_password2');
 
+
 INSERT INTO movies (title, year_of_release, genres, description, rating, runtime)
 VALUES
 ('The Shawshank Redemption', 1994, '{Drama}', 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', 9.3, 142),
@@ -14,9 +15,11 @@ VALUES
 ('The Conjuring', 2013, '{Horror, Paranormal}', 'Research uncovers a harrowing history of the house, linking it to accused witch Bathsheba Sherman, who, in 1863, sacrificed her infant to the devil, committed suicide, and left a legacy of murders and suicides on the property.', 7.5, 112);
 
 
+
+
 INSERT INTO reviews (movie_id, user_id, rating, comment) 
 VALUES
   (1, 1, 5, 'Absolutely loved it! The storyline and acting were outstanding.'),
   (1, 2, 4, 'A classic film with a powerful message. Enjoyed every moment.'),
   (2, 1, 4, 'Mind-blowing! The concept of dreams within dreams was fascinating.'),
-  (2, 3, 5, 'Inception is a masterpiece. Christopher Nolan''s brilliance shines through.');
+  (2, 2, 5, 'Inception is a masterpiece. Christopher Nolan''s brilliance shines through.');
