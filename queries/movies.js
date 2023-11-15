@@ -44,7 +44,7 @@ const deleteMovie = async (id) => {
 const updateMovie = async (id, movie) => {
   try {
     const { title, year_of_release, genres, description, rating, runtime } = movie;
-    const updatedMovie = await db.one("UPDATE movies SET title=$1, year_of_release=$2, genre=$3, description=$4, rating=$5, runtime=$6,cis_favorite=$7", [title,year_of_release,genres, description, rating, runtime]);
+    const updatedMovie = await db.one("UPDATE movies SET title=$1, year_of_release=$2, genre=$3, description=$4, rating=$5, runtime=$6, WHERE id=$7", [title,year_of_release,genres, description, rating, runtime]);
     return updatedMovie 
   } catch(error) {
     return error
