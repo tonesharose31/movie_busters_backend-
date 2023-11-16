@@ -15,7 +15,7 @@ const getOneMovie = async (id) => {
   
     return oneMovie
   } catch(error) {
-    return error
+    return {error: 'Movie not found'};
   }
 };
 
@@ -50,6 +50,7 @@ const updateMovie = async (id, movie) => {
     return error
   }
 };
+
 
 module.exports = {
   getAllMovies,
